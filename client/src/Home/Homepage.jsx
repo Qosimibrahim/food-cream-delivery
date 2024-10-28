@@ -1,6 +1,6 @@
 import React from 'react';
 import './homepage.css';
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import imgq1 from '../images/QCSlogo.JPG';
 import img1 from '../images/beverage.jpg';
@@ -48,16 +48,27 @@ const Homepage = () => {
     }
   };
 
+//   useEffect(() => {
+//     // Scroll to the top and force reload
+//     window.scrollTo(0, 0);
+//     window.location.reload();
+// }, []);
+
+useEffect(() => {
+  window.scrollTo(0, 0); // Start at top of the page
+  document.body.style.overflow = 'auto'; // Ensure scrolling is enabled
+}, []);
+
   const removeFromCart = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
   };
 
-  const handleLogin = (name) => {
-    setUser(name); // Set the user name when they log in
-    setUsername('');
-  };
+  // const handleLogin = (name) => {
+  //   setUser(name); // Set the user name when they log in
+  //   setUsername('');
+  // };
   
   const handleLogout = () => {
     setUser(null); // Clear user state
@@ -70,7 +81,7 @@ const Homepage = () => {
 
   const handleCheckout = () => {
     // Redirect to payment platform (placeholder URL)
-    window.location.href = 'https://your-payment-platform.com';
+    window.location.href = 'https://payment-platform.com';
   };
 
   const handleSearch = (e) => {

@@ -44,7 +44,8 @@ function Firsthome() {
             if (result.data === 'Success') {
                 // Assuming the API returns user data including the name
                 localStorage.setItem('username', result.data.username); // Save username in localStorage
-                navigate('/home'); // Navigate to the home page
+                window.location.href = '/home'; // Navigate to the home page
+                
             }
         })
         .catch(err => console.log(err));
