@@ -40,6 +40,11 @@ app.post('/register', (req, res) => {
         
 })
 
+app.get("/status", (req, res) => {
+    res.status(200).json({status: "Server is running"})
+})
+
+
 app.listen(3001, () => {
-    console.log("server is running")
+    console.log("server is running on port 3001")
 })
