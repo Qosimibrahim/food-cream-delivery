@@ -23,11 +23,12 @@ function Firsthome() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const BACKEND_URL = "https://food-cream-delivery.onrender.com"
 
     // Handle registration
     const handleRegister = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/register', { name, email, password })
+        axios.post(`${BACKEND_URL}/register`, { name, email, password })
             .then(result => {
                 console.log(result);
                 navigate('/home');
@@ -38,7 +39,7 @@ function Firsthome() {
     // Handle login
     const handleLogin = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/login', { email, password })
+    axios.post(`${BACKEND_URL}/login`, { email, password })
         .then(result => {
             console.log(result);
             if (result.data === 'Success') {
@@ -47,7 +48,7 @@ function Firsthome() {
                 window.location.href = '/home'; // Navigate to the home page
                 
             }
-        })
+       })
         .catch(err => console.log(err));
 };
 
